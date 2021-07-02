@@ -49,6 +49,14 @@ soloMayusc xs = [x|x<-xs, x `elem` ['A'..'Z']]
 --Lista de los numeros impares
 y=[x|x<-[1..10],x `mod` 2 /= 0]
 
+--funcion que ordena una lista de menor a mayor
+isort :: Ord a => [a] -> [a]
+isort [] = [] 
+isort (x:xs) = insert x (isort xs)
 
-divisores n = filter (curry div n) [1..100]
-
+--funcion que inserta ordeando en una lista
+insert :: Ord a => a -> [a] -> [a]
+insert a [] = [a]
+insert a (x:xs) 
+    | a > x = x : insert a xs
+    | otherwise = a : x : xs

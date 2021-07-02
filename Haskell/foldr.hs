@@ -64,3 +64,11 @@ reverse
 map
 filfer
 -}
+
+class Dummy a where
+  dummy :: a
+
+instance Dummy Char where
+    dummy = 'a'
+
+pre cs = dummy : '-' : cs
